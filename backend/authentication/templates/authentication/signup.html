@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
+
+    <title>User Registration</title>
+
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post" novalidate >
+            {% csrf_token %}
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
+            {% endfor %}
+            <input type="submit" value="SignUp">
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <script src="{% static 'authentication/js/jquery.js' %}"></script>
+    <script src="{% static 'authentication/js/popper.js' %}"></script>
+    <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
+
+</body>
+</html>
