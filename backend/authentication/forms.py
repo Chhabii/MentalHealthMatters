@@ -12,4 +12,5 @@ class SignUpForm(UserCreationForm):
         labels = {'email':'Email'}
         widgets = {
             'first_name' : forms.TextInput(attrs={'class':'username'}),
+            
         }
