@@ -12,19 +12,35 @@
 
 </head>
 <body>
-    <div class="container">
-        <form action="" method="post" novalidate >
-            {% csrf_token %}
-            {% for fm in form %}
-                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
-            {% endfor %}
-            <input type="submit" value="SignUp">
-        </form>
-        {% if messages %}
-            {% for message in messages %}
-                <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
-            {% endfor %}
-        {% endif %}
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="col-sm-12">
+                <h1 class="text-center">SignUp</h1>
+                
+                <form action="" method="post" novalidate >
+                    {% csrf_token %}
+                    {% for fm in form %}
+                    <div class="form-group">
+                        {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
+                    </div>
+                    {% endfor %}
+                    <input class="btn btn-primary" type="submit" value="SignUp">
+                    
+                </form>
+                <a href="{% url 'login' %}">Login</a>
+
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+                    {% endfor %}
+                {% endif %}
+                
+                
+                
+            </div>
+        </div>
     </div>
 
 
