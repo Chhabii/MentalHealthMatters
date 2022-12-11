@@ -21,6 +21,10 @@
         .nav-background{
             background-color: rgb(9, 109, 146);
         }
+
+        .jumbo-color{
+            background-color: rgb(169, 211, 226);
+        }
     </style>
 </head>
 <body>
@@ -35,6 +39,25 @@
     <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
+
+
+    <!--Writing for blog from here-->
+    <div class="col-sm-12">
+        <h1 class="text-dark my-5 text-center">BlogPosts</h1>
+    </div>
+
+    {% for p in post %}
+        <div class="jumbotron jumbo-color">
+            <h1 class="display-4">{{p.title}}</h1>
+            <p class="lead">{{p.post}}</p>
+            <hr class="my-4">
+            <p>{{p.published_date}}</p>
+            <p> Author User: <strong>{{p.author}}</strong></p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
+            </p>
+        </div>
+    {% endfor %}
     
     
 

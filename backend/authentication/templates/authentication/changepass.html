@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Password</title>
-</head>
-<body>
-    <form action="" method="post" novalidate>
-        {% csrf_token %}
-        {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-                <p class="error">{{error}}</p>
-            {% endfor %}
-            {% endif %}
-
-            {% for fm in form %}
-                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
-            {% endfor %}
-            <input type="submit" value="Save">
+{% extends 'authentication/base.html' %}
+{% load static %}
+{% block title %}ChangePassword{% endblock %}
+{% block content %}
+    <div class="col-sm-12">
+        <h1 class="text-center">change Password</h1>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="error">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+    
+                {% for fm in form %}
+                <div class="form-group">
+                    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
+                </div>
+                {% endfor %}
+                <input type="submit" value="Save">
+            </form>
+    
         </form>
+        <a href="{% url 'signup' %}">Return Home</a>
 
-    </form>
-</body>
-</html>
+    </div>
+{% endblock %}

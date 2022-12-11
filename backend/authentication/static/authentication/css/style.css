@@ -1,3 +1,23 @@
+body{
+    background-color: rgb(221, 243, 249) !important;
+}
 .error{
     color:red;
 }
+
+/* a{
+    text-decoration: none !important;
+} */
+/* a:link, a:visited {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: green;
+    color: white;
+    } */
