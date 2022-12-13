@@ -1,36 +1,29 @@
-<!DOCTYPE html>
+{% extends 'authentication/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
-
-    <title>User Registration</title>
-
-</head>
-<body>
-    <div class="container">
-        <form action="" method="post" novalidate >
-            {% csrf_token %}
-            {% for fm in form %}
-                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
-            {% endfor %}
-            <input type="submit" value="SignUp">
-        </form>
-        {% if messages %}
-            {% for message in messages %}
-                <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
-            {% endfor %}
-        {% endif %}
-    </div>
+{% block title %}SignUp{% endblock %}
+{% block content %}
+            <div class="col-sm-12 text-light" style="background-color:rgb(9, 109, 146);border-radius: 10px;">
+                <h1 class="text-center my-3">SignUp</h1>
+                <hr style="background-color:white;height: 1px;">
+                <form class="mx-5" action="" method="post" novalidate >
+                    {% csrf_token %}
+                    {% for fm in form %}
+                    <div class="form-group">
+                        {{fm.label_tag}} {{fm}} <small class="text-warning">{{fm.errors|striptags}}</small>
+                        
+                    </div>
+                    {% endfor %}
+                    <input class="btn btn-primary" type="submit" value="SignUp">
+                </form>
+                <p class="my-3 mx-5">Already have an account?</p>
+                <button type="button" class="btn btn-success mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup" href="{% url 'login' %}">Login</a></button>
 
 
-    <script src="{% static 'authentication/js/jquery.js' %}"></script>
-    <script src="{% static 'authentication/js/popper.js' %}"></script>
-    <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
-
-</body>
-</html>
+                {% if messages %}
+                    {% for message in messages %}
+                        <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+                    {% endfor %}
+                {% endif %}
+                
+            </div>
+{% endblock %}
