@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
 from django.contrib.auth import authenticate,logout,update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponseRedirect
-from .models import BlogPost
+
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -72,6 +72,3 @@ def user_change_pass(request):
     else:
         return HttpResponseRedirect('/account/login/')
 
-def blog(request):
-    post = BlogPost.objects.all()
-    return render(request,'authentication/blog.html',{'post':post})
