@@ -10,7 +10,11 @@ from  django.shortcuts import redirect
 @login_required(login_url='/account/login/')
 def blog(request):
     post = BlogPost.objects.all()
-    return render(request,'blog/blog.html',{'post':post})
+    admin = True
+    if request.user.is_staff:
+        return render(request,'blog/blog.html',{'post':post,'admin':admin})
+    else:    
+        return render(request,'blog/blog.html',{'post':post})
 
 
 @login_required(login_url='/account/login/')
@@ -22,6 +26,7 @@ def addnewpost(request):
                 bp = BlogPost()
                 bp.author = request.user
                 bp.title = fm.cleaned_data['title']
+                bp.abstract = fm.cleaned_data['abstract']
                 bp.post = fm.cleaned_data['post']
                 bp.published_date = fm.cleaned_data['published_date']
                 bp.save()
@@ -35,3 +40,26 @@ def addnewpost(request):
 def readmore(request,object_id):
     p = BlogPost.objects.get(id=object_id)
     return render(request,'blog/readmore.html',{'p':p})
+
+
+@login_required(login_url='/account/login/')
+def delete_post(request,object_id):
+    if request.method == "POST":
+        p = BlogPost.objects.get(id=object_id)
+        p.delete()
+        return redirect('/blog/')
+
+        
+@login_required(login_url='/account/login/')
+def update_post(request,object_id):
+    if request.method == "POST":
+        bp = BlogPost.objects.get(id=object_id)
+        fm = AddNewPost(request.POST,instance=bp)
+        if fm.is_valid():
+            fm.save()
+            return redirect('/blog/')
+    else:
+        bp = BlogPost.objects.get(id=object_id)
+        fm = AddNewPost(instance=bp)
+    
+    return render(request,'blog/updatepost.html',{'form':fm})

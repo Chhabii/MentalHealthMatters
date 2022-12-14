@@ -52,7 +52,18 @@
     </div>
 
     {% for p in post %}
+        
         <div class="jumbotron jumbo-color">
+            {% if admin %}
+                <form action="{% url 'delete' p.id %}" class="d-inline" method="post">
+                    {%csrf_token%}
+                    <input type="submit" class="btn btn-danger btn-sm " value="Delete">
+                </form> 
+                <a href="{% url 'update' p.id %}" class="btn btn-warning btn-sm">Edit</a>
+
+            {% endif %}
+
+
             <h1 class="display-4">{{p.title}}</h1>
             <p class="lead">{{p.abstract}}</p>
             <hr class="my-4">
