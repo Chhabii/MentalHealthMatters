@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
 
-    <title>Dashboard | MHM</title>
+    <title>WriteBlog | MHM</title>
     <style>
         .success{
             margin-left:10px;
@@ -28,39 +28,20 @@
     </style>
 </head>
 <body>
-    <div class="loginsuccess">
-        {% if messages %}
-        {% for message in messages %}
-            <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
-        {% endfor %}
-        {% endif %}
-    </div>
-    
     <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
-
-
     <!--Writing for blog from here-->
     <div class="col-sm-12">
-        <h1 class="text-dark my-5 text-center">BlogPosts</h1>
+        <h1 class="text-dark my-5 text-center">Write Blog</h1>
     </div>
+    <form action="" method="post">
+        {% csrf_token %}
 
-    {% for p in post %}
-        <div class="jumbotron jumbo-color">
-            <h1 class="display-4">{{p.title}}</h1>
-            <p class="lead">{{p.post}}</p>
-            <hr class="my-4">
-            <p>{{p.published_date}}</p>
-            <p> Author User: <strong>{{p.author}}</strong></p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
-            </p>
-        </div>
-    {% endfor %}
-    
-    
-
+        {{form.media}}
+        {{form.as_p}}
+        <input type="submit" value="Post">
+    </form>
 
     <script src="{% static 'authentication/js/jquery.js' %}"></script>
     <script src="{% static 'authentication/js/popper.js' %}"></script>

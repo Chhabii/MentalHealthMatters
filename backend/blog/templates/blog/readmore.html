@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
+
+    <title>{{p.title}} | MHM</title>
+    <style>
+        .success{
+            margin-left:10px;
+            color:rgb(9, 109, 146);
+        }
+        .loginsuccess{
+            background-color: rgb(221, 243, 249);
+            text-align: center;
+        }
+        .nav-background{
+            background-color: rgb(9, 109, 146);
+        }
+
+        .jumbo-color{
+            background-color: rgb(169, 211, 226);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid nav-background">
+        {% include 'authentication/navbar.html' %}
+    </div>
+    <div class="jumbotron jumbo-color">
+        <p>Author: <strong>{{p.author}}</strong></p>
+        <p>Published at: {{p.published_date}}</p>
+        <h1 class="display-4">{{p.title}}</h1>
+        <p class="lead">{{p.post | safe}}</p>
+
+    </div>
+ 
+
+    <script src="{% static 'authentication/js/jquery.js' %}"></script>
+    <script src="{% static 'authentication/js/popper.js' %}"></script>
+    <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
+
+</body>
+</html>
