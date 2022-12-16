@@ -2,28 +2,30 @@
 {% load static %}
 {% block title %}SignUp{% endblock %}
 {% block content %}
-            <div class="col-sm-12 text-light" style="background-color:rgb(9, 109, 146);border-radius: 10px;">
-                <h1 class="text-center my-3">SignUp</h1>
-                <hr style="background-color:white;height: 1px;">
+            
+                <div class="formboxsignup">
+                    <h3 style="text-align: center;margin-top: 60px;letter-spacing: 7px;">SIGNUP</h3>
                 <form class="mx-5" action="" method="post" novalidate >
                     {% csrf_token %}
+                    <div class="centermalanu">
                     {% for fm in form %}
                     <div class="form-group">
-                        {{fm.label_tag}} {{fm}} <small class="text-warning">{{fm.errors|striptags}}</small>
+                         {{fm}} <small class="text-warning">{{fm.errors|striptags}}</small>
                         
-                    </div>
+                    
                     {% endfor %}
-                    <input class="btn btn-primary" type="submit" value="SignUp">
+                    </div>
+                    <input class="inoutfield" type="submit" value="SignUp">
                 </form>
-                <p class="my-3 mx-5">Already have an account?</p>
-                <button type="button" class="btn btn-success mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup" href="{% url 'login' %}">Login</a></button>
+                <a href="{% url 'login' %}" style="text-decoration: none;color: black;text-align: right;">Already have an account?</a>
+                <!-- <button type="button" class="btn btn-success mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup" href="{% url 'login' %}">Login</a></button> -->
 
 
                 {% if messages %}
                     {% for message in messages %}
-                        <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+                        <small style="color:green;"{% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
                     {% endfor %}
                 {% endif %}
-                
+                </div>
             </div>
 {% endblock %}

@@ -4,29 +4,29 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,Userna
 from django.utils.translation import gettext_lazy as _
 
 class SignUpForm(UserCreationForm):
-    password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'class':'form-control'}))
-    password2 = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'inoutfield'}))
+    password2 = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'placeholder':'Confirm Password','class':'inoutfield'}))
 
     class Meta:
         model  = User
         fields = ['username','first_name','last_name','email']
         labels = {'email':'Email'}
         widgets = {
-            'username' : forms.TextInput(attrs={'class':'form-control'}),
-            'first_name' : forms.TextInput(attrs={'class':'form-control'}),
-            'last_name' : forms.TextInput(attrs={'class':'form-control'}),
-            'email' : forms.TextInput(attrs={'class':'form-control'}),
-            'password' : forms.TextInput(attrs={'class':'form-control'}),
+            'username' : forms.TextInput(attrs={'placeholder':'Username','class':'inoutfield'}),
+            'first_name' : forms.TextInput(attrs={'placeholder':'Firstname','class':'inoutfield'}),
+            'last_name' : forms.TextInput(attrs={'placeholder':'Lastname','class':'inoutfield'}),
+            'email' : forms.TextInput(attrs={'placeholder':'Email','class':'inoutfield'}),
+            # 'password' : forms.TextInput(attrs={'placeholder':'Password','class':'inoutfield'}),
 
             
             
         }
 class LoginForm(AuthenticationForm):
-    username = UsernameField(widget=forms.TextInput(attrs={'autofocus':True,'class':'form-control'}))
+    username = UsernameField(widget=forms.TextInput(attrs={'placeholder':'Username','autofocus':True,'class':'inoutfield'}))
     password = forms.CharField(
         label=_("Password"),
         strip=False,
-        widget=forms.PasswordInput(attrs={"autofocus": True,'class':'form-control'})
+        widget=forms.PasswordInput(attrs={'placeholder':'Password',"autofocus": True,'class':'inoutfield'})
     )
 
 class ChangePassForm(PasswordChangeForm):
