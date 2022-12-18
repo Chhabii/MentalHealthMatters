@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
 from django.contrib.auth import authenticate,logout,update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponseRedirect
+from blog.models import BlogPost
+
 
 
 from django.views.decorators.csrf import csrf_exempt
@@ -47,10 +49,15 @@ def user_login(request):
 
 def dashboard(request):
     if request.user.is_authenticated:
-        
-        return render(request,'authentication/dashboard.html',{'name':request.user})
+        user = request.user
+        favorite_posts = BlogPost.objects.filter(user_favorite=user)
+        return render(request,'authentication/dashboard.html',{'name':request.user,'post':favorite_posts})
     else:
         return HttpResponseRedirect('/account/login/')
+
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect('/account/login/')
 
 def log_out(request):
     logout(request)

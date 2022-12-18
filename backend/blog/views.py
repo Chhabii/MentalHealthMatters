@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import BlogPost
 from django.contrib.auth.decorators import login_required
-from .models import BlogPost
 from .forms import AddNewPost
-from  django.shortcuts import redirect
+from  django.shortcuts import redirect,get_object_or_404
+from django.urls import reverse_lazy,reverse
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 
@@ -63,3 +65,14 @@ def update_post(request,object_id):
         fm = AddNewPost(instance=bp)
     
     return render(request,'blog/updatepost.html',{'form':fm})
+
+@login_required(login_url='/account/login/')
+def add_favorite(request,pk):
+    post = get_object_or_404(BlogPost,pk=pk)
+    if request.user.is_authenticated:
+        if request.user in post.user_favorite.all():
+            post.user_favorite.remove(request.user)
+        else:
+            post.user_favorite.add(request.user)
+    return HttpResponseRedirect(reverse('readmore',args=[str(pk)]))
+    
