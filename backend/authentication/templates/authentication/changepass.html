@@ -2,9 +2,8 @@
 {% load static %}
 {% block title %}ChangePassword{% endblock %}
 {% block content %}
-    <div class="col-sm-12 text-light" style="background-color:rgb(9, 109, 146);border-radius: 10px;">
-        <h1 class="text-center my-3">Change Password</h1>
-        <hr style="background-color: white;height:1px;">
+    <div class="formbox">
+        <h3 style="text-align: center;margin-top: 20px;">CHANGE PASSWORD</h3>
         <form class="mx-5" action="" method="post" novalidate>
             {% csrf_token %}
             {% if form.non_field_errors %}
@@ -15,14 +14,15 @@
     
                 {% for fm in form %}
                 <div class="form-group">
-                    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
+                    {{fm}} {{fm.errors|striptags}}
                 </div>
                 {% endfor %}
-                <input class="btn btn-primary" type="submit" value="Save">
+                <input class="inoutfield" type="submit" value="Save">
             </form>
     
         </form>
-        <button type="button" class="btn btn-success mt-3 mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup"a href="{% url 'signup' %}">Return Home</a>
+        <p style="text-align:center;margin-top: 7px;"><a href="{% url 'signup' %}" style=" text-decoration: none;color: black;">Return home</a></p>
+        <!-- <button type="button" class="btn btn-success mt-3 mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup"a href="{% url 'signup' %}">Return Home</a> -->
 
     </div>
 {% endblock %}

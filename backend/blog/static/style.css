@@ -1,0 +1,9 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.container{
+    background-color: red;
+    height: fit-content;
+    max-width: fit-content;
+}
