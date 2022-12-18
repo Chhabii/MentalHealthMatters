@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="backend/blog/static/style.css">
 
     <title>Dashboard | MHM</title>
     <style>
@@ -53,7 +54,7 @@
 
     {% for p in post %}
         
-        <div class="jumbotron jumbo-color">
+        <div class="container">
             {% if admin %}
                 <form action="{% url 'delete' p.id %}" class="d-inline" method="post">
                     {%csrf_token%}
