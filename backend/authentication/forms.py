@@ -34,21 +34,21 @@ class ChangePassForm(PasswordChangeForm):
         label=_("Old password"),
         strip=False,
         widget=forms.PasswordInput(
-            attrs={"autocomplete": "current-password", "autofocus": True,'class':'form-control'}
+            attrs={'placeholder':'Old Password',"autocomplete": "current-password", "autofocus": True,'class':'inoutfield'}
         ),
         )
         new_password1 = forms.CharField(
         label=_("New password"),
         strip=False,
         widget=forms.PasswordInput(
-            attrs={"autocomplete": "new-password", "autofocus": True,'class':'form-control','class':'form-control'}
+            attrs={'placeholder':'New Password',"autocomplete": "new-password", "autofocus": True,'class':'inoutfield'}
         ),
         )
         new_password2 = forms.CharField(
         label=_("Confirm password"),
         strip=False,
         widget=forms.PasswordInput(
-            attrs={"autocomplete": "new-password", "autofocus": True,'class':'form-control','class':'form-control'}
+            attrs={'placeholder':'Confirm Password',"autocomplete": "new-password", "autofocus": True,'class':'inoutfield'}
         ),
         )
 
