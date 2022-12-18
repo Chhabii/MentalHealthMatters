@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
     <title>{{p.title}} | MHM</title>
     <style>
@@ -25,6 +26,9 @@
         .jumbo-color{
             background-color: rgb(169, 211, 226);
         }
+        .favorite-button.active {
+            color: red;
+        }
     </style>
 
 </head>
@@ -38,6 +42,15 @@
         <h1 class="display-4">{{p.title}}</h1>
         <p class="lead">{{p.post | safe}}</p>
 
+        {% if user.is_authenticated %}
+            {% if user in p.user_favorite.all %}
+                <a href="{% url 'add_favorite' p.pk %}" class="favorite-button active">
+            {% else %}
+                <a href="{% url 'add_favorite' p.pk %}" class="favorite-button">
+            {% endif %}
+                <i class="fas fa-heart"></i>
+            </a>
+        {% endif %}
     </div>
  
 

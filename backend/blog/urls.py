@@ -6,4 +6,6 @@ urlpatterns = [
     path('readmore/<int:object_id>',views.readmore,name='readmore'),
     path('delete/<int:object_id>',views.delete_post,name='delete'),
     path('update/<int:object_id>/',views.update_post,name='update'),
+    path('add_favorite/<int:pk>/',views.add_favorite,name='add_favorite'),
+
 ]

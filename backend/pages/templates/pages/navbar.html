@@ -2,9 +2,9 @@
 {% load static %}
 
 
-<nav class="navbar navbar-expand-lg navbar-dark nav-background py-3 ">
+<nav class="navbar navbar-expand-sm navbar-dark nav-background ">
     <a class="navbar-brand" href="{% url 'home-page' %}">
-      <img src="{% static 'pages/images/mhm-logo2.png' %}" width="150" height="120" alt="logo">   
+      <img src="{% static 'pages/images/mhm-logo2.png' %}" width="200" height="150" alt="logo">   
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,10 +13,10 @@
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+            <a class="nav-link" href="{% url 'signup' %}"><h2>Signup</h2></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'login' %}"><h2>Login</h2></a>
         </li>
 
           

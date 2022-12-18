@@ -9,5 +9,8 @@ class BlogPost(models.Model):
     # post = models.TextField()
     abstract = models.TextField()
     post = RichTextField()
-
+    user_favorite = models.ManyToManyField(User,related_name='user_favorite',blank=True)
     published_date=models.DateTimeField(default=timezone.now)
+
+    def total_favorite(self):
+        return self.user_favorite.count()
