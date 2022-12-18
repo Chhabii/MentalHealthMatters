@@ -34,7 +34,18 @@ def user_login(request):
                 user = authenticate(username=uname,password=upass)
                 if user is not None:
                     auth_login(request,user)
-                    messages.success(request,'Logged in Successfully!!')
+                    user_type = user.user_type
+                    if user_type == '1':
+                        messages.success(request,'Logged in as admin!!')
+                    elif user_type == '2':
+                        messages.success(request,'Logged in as Teacher!!')
+                    elif user_type == '3':
+                        messages.success(request,'Logged in as Student!!')
+                    else:
+                        messages.success(request,'logged in but no user_type')
+                    
+
+                    # messages.success(request,'Logged in Successfully!!')
                     return HttpResponseRedirect('/account/dashboard/')
 
                 
