@@ -1,0 +1,48 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+#blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.blogcontain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    background-color: red !important;
+   
+}
+.blog-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.blog-box{
+    width: 350px;
+    background-color: rgb(89, 13, 110);
+    border: 1px solid #ececec;
+    border-radius: 30px;
+    background-color: red;
+    
+}
+.blog-img{
+    width: 100%;
+    height: auto;
+}
+.lead.rdbtn{
+    font-size: small;
+    color: black;
+}
+.adddel{
+    color: black;
+}

@@ -21,6 +21,9 @@
         .nav-background{
             background-color: rgb(9, 109, 146);
         }
+        .jumbo-color{
+            background-color: rgb(169, 211, 226);
+        }
     </style>
 </head>
 <body>
@@ -47,6 +50,30 @@
     {% endif %}
 
     
+    <div class="container-fluid my-5 " >
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-center">Fav Posts</h2>
+                <div style="overflow-y: scroll;height:670px;">
+                    {% for p in post %}
+                        <div class="jumbotron jumbo-color">
+                
+                            <h1 class="display-5">{{p.title}}</h1>
+                            <p class="lead">{{p.abstract}}</p>
+                            <hr class="my-4">
+                            <p>{{p.published_date}}</p>
+                            <p> Author: <strong>{{p.author}}</strong></p>
+                
+                        </div>
+                    {% endfor %}
+                </div>
+            
+            </div>
+            <div class="col-6">
+                <h2 class="text-center">Student Information</h2>
+            </div>
+        </div>
+    </div>
     
 
 
