@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib import messages
 from .forms import SignUpForm,LoginForm,ChangePassForm
 from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
 from django.contrib.auth import authenticate,logout,update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponseRedirect
+from .models import CustomUser
 
 
 from django.views.decorators.csrf import csrf_exempt
@@ -83,3 +84,35 @@ def user_change_pass(request):
     else:
         return HttpResponseRedirect('/account/login/')
 
+def profile(request):
+    user = CustomUser.objects.get(id = request.user.id)
+    context = {
+        "user":user,
+    }
+    return render(request,'authentication/profile.html',context)
+
+@csrf_exempt
+def profileupdate(request):
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    username = request.POST.get('username')
+    email = request.POST.get('email')
+    address = request.POST.get('address')
+    # print(first_name,last_name,username)
+    try:
+        customuser = CustomUser.objects.get(id = request.user.id)
+        customuser.first_name = first_name
+        customuser.last_name = last_name
+        customuser.username = username
+        customuser.email = email
+        customuser.address = address
+
+        customuser.save()
+        messages.success(request,'Profile Updated!!')
+        # return HttpResponseRedirect('authentication/profile.html')
+        return redirect('profile')
+    except:
+        messages.error(request,'Something went wrong. Try again!!')
+        
+    return render(request,'authentication/profile.html')
+    
