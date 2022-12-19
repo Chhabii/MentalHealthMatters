@@ -1,82 +1,206 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'blog/css/style.css' %}"> -->
 
     <title>Dashboard | MHM</title>
     <style>
-        .success{
-            margin-left:10px;
-            color:rgb(9, 109, 146);
+        body{
+            margin: 0%;
+            padding: 0%;
+            
         }
-        .loginsuccess{
+        
+        .success {
+            margin-left: 10px;
+            color: rgb(9, 109, 146);
+        }
+
+        .loginsuccess {
             background-color: rgb(221, 243, 249);
             text-align: center;
         }
-        .nav-background{
+
+        .nav-background {
             background-color: rgb(9, 109, 146);
         }
 
-        .jumbo-color{
+        .jumbo-color {
             background-color: rgb(169, 211, 226);
+        }
+
+        .blog-box {
+            width: 350px;
+            height: 260px;
+            
+            border: 1px solid #ececec;
+            border-radius: 5px;
+            background-color: rgb(226, 255, 250);
+            border-color: black;
+            margin: 5px;
+
+        }
+
+        #blog {
+            display:flex;
+            flex-wrap: wrap;
+            
+        }
+
+        .blogcontainer {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0px;
+            flex-wrap: wrap;
+            gap: 60px;
+            
+
+
+        }
+
+        .blog-heading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: large;
+            font-weight: 700;
+        }
+
+        
+        .adddel {
+            color: rgb(2, 2, 1);
+            border: none;
+            background-color: rgb(16, 139, 247);
+            width: 55px;
+            border-radius: 5px;
+
+
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            
+            margin-left: 100px;
+        }
+        .rdbtn{
+            color: green;
+            text-decoration: none;
+        }
+        .rdbtn:hover{
+            color: blue;
+            text-decoration: none;
+        }
+        .date{
+            font-size: small;
+        }
+        .portion{
+            position: fixed;
+            margin-top: 85px;
+        }
+        .adpst{
+            background-color: transparent;
+            border-radius: 15px;
+        }
+        .adpst a{
+            color: white;
+
+        }
+        .adpst a:hover{
+            text-decoration: none;
+        }
+        .adpst:hover{
+            background-color:black;
+        }
+        .blogabs{
+            overflow: hidden;
+           
+            height: 45px;
         }
     </style>
 </head>
+
 <body>
     <div class="loginsuccess">
         {% if messages %}
         {% for message in messages %}
-            <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
         {% endfor %}
         {% endif %}
     </div>
-    
-    <div class="container-fluid nav-background">
+    <div class="blogcontain">
         {% include 'authentication/navbar.html' %}
     </div>
+    <button class="adpst"><a href="{% url 'addnewpost' %}">Add new post</a></button>
+    <section id="blog">
+
+        <!--Writing for blog from here-->
+        <!-- <div class="col-sm-12"> -->
+        <!-- <h1 class="text-dark my-5 text-center">BlogPosts</h1> -->
+        <!-- <div class="row"> -->
+        <!-- <div class="col-4"> -->
+        <!-- <button class="btn btn-success"><a href="{% url 'addnewpost' %}">Add new post</a></button> -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
+
+        {% for p in post %}
+
+        <div class="blogcontainer">
+            <div class="blog-box">
+
+                <!-- {% if admin %}
+                <form action="{% url 'delete' p.id %}" class="d-inline" method="post"> -->
+                <!-- {% csrf_token %} -->
+
+                <!-- </form> -->
 
 
-    <!--Writing for blog from here-->
-    <div class="col-sm-12">
-        <h1 class="text-dark my-5 text-center">BlogPosts</h1>
-        <div class="row">
-            <div class="col-4">
-               <button class="btn btn-success"><a href="{% url 'addnewpost' %}">Add new post</a></button>
+                <!-- {% endif %} -->
+
+                <h1 class="blog-heading">{{p.title}}</h1>
+                
+                <div class="blogabs">{{p.abstract}}</div>
+                
+                <!-- <hr style="position: absolute;margin-top: 5px;height:2px;border-width:0;color:black;background-color:black"> -->
+                <div class="portion">
+                    
+                    <span> Author: <strong>{{p.author}}</strong></span>
+                    <br><span class="date">{{p.published_date}}</span>
+                    
+                    <br><a class="rdbtn" href="{% url 'readmore' p.id %}" role="button">Read more</a>
+                    
+                    <!-- <a href="{% url 'update' p.id %}" class="edi">Edit</a> -->
+                    <div class="buttons">
+                        <form action="{% url 'update' p.id %}">
+                            <input type="submit" class="adddel" value="Edit">
+                        </form>
+                        {% if admin %}
+                        <form action="{% url 'delete' p.id %}" class="d-inline" method="post">
+                            {%csrf_token%}
+                            <input type="submit" class="adddel" value="Delete">
+                        </form>
+
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    {% for p in post %}
-        
-        <div class="container">
-            {% if admin %}
-                <form action="{% url 'delete' p.id %}" class="d-inline" method="post">
-                    {%csrf_token%}
-                    <input type="submit" class="btn btn-danger btn-sm " value="Delete">
-                </form> 
-                <a href="{% url 'update' p.id %}" class="btn btn-warning btn-sm">Edit</a>
-
-            {% endif %}
-
-
-            <h1 class="display-4">{{p.title}}</h1>
-            <p class="lead">{{p.abstract}}</p>
-            <hr class="my-4">
-            <p>{{p.published_date}}</p>
-            <p> Author: <strong>{{p.author}}</strong></p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="{% url 'readmore' p.id %}" role="button">Read more</a>
-            </p>
-        </div>
+    
     {% endfor %}
-    
-    
+</section>
+
+
 
 
     <script src="{% static 'authentication/js/jquery.js' %}"></script>
@@ -84,4 +208,5 @@
     <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
 
 </body>
+
 </html>
