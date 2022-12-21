@@ -7,7 +7,7 @@ from django.contrib.auth import login as auth_login
 from django.http import HttpResponseRedirect
 from blog.models import BlogPost
 
-from .models import CustomUser
+from .models import CustomUser, Student, Admin, Teacher
 
 
 from django.views.decorators.csrf import csrf_exempt
@@ -92,7 +92,17 @@ def user_change_pass(request):
         return HttpResponseRedirect('/account/login/')
 
 def profile(request):
+    # if request.user.user_type == '1':
+    #     user = Admin.object.get(id = request.user.id)
+    # elif request.user.user_type == '2':
+    #     user = Teacher.object.get(id = request.user.id)
+
+    # elif request.user.user_type == '3':
+    #     user = Student.object.get(id = request.user.id)
+
+    # else:
     user = CustomUser.objects.get(id = request.user.id)
+
     context = {
         "user":user,
     }
@@ -108,13 +118,31 @@ def profileupdate(request):
     # print(first_name,last_name,username)
     try:
         customuser = CustomUser.objects.get(id = request.user.id)
+        # userr = customuser(
+        #     first_name = first_name,
+        #     last_name = last_name,
+        #     username = username,
+        #     email = email
+
+
+        # )
+        # userr.save()
+ 
         customuser.first_name = first_name
         customuser.last_name = last_name
         customuser.username = username
         customuser.email = email
-        customuser.address = address
-
         customuser.save()
+        # print(request.user.user_type)
+        if customuser.user_type == '1':
+            print('hello')
+            adminUser = Admin.object.get(id = request.user.id)
+
+            adminUser.address = address
+
+            adminUser.save()
+
+
         messages.success(request,'Profile Updated!!')
         # return HttpResponseRedirect('authentication/profile.html')
         return redirect('profile')

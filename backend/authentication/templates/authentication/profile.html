@@ -73,6 +73,10 @@
     margin-left:10px;
     color:rgb(9, 109, 146);
 }
+.alert-error {
+  background-color: rgb(204, 32, 32);
+  color: #fff;
+}
 .loginsuccess{
     background-color: rgb(221, 243, 249);
     text-align: center;
@@ -87,7 +91,7 @@
 
 <div class="container">
   <div class="main-body">
-    <div class="container-fluid nav-background">
+    <div>
       {% if messages %}
       {% for message in messages %}
           <div {% if message.tags %} class="alert alert-{{ message.tags }} msg fade show" role="alert" {% endif %}>{{message}}
@@ -97,6 +101,9 @@
           </div>
       {% endfor %}
       {% endif %}
+      </div>
+    <div class="container-fluid nav-background">
+   
       {% include 'authentication/navbar.html' %}
   </div>
 
@@ -120,7 +127,18 @@
                   <div class="mt-3">
                     <h4>{{user.first_name}} {{user.last_name}}</h4>
                     <p class="text-secondary mb-1">@{{user.username}}</p>
-                    <p class="text-muted font-size-sm">{{user.address}}</p>
+                    
+                      {% if user.user_type == '1'%}
+                      <p class="text-muted font-size-sm">{{user.admin.address}}</p>
+                      <p class="text-muted font-size-sm">Admin</p>
+
+                      {% elif user.user_type == '2'%}
+                      <p class="text-muted font-size-sm">{{user.teacher.address}}</p>
+                      <p class="text-muted font-size-sm">Teacher</p>
+                      {% elif user.user_type == '3'%}
+                      <p class="text-muted font-size-sm">{{user.student.address}}</p>
+                      <p class="text-muted font-size-sm">Student</p>
+                      {% endif %}
                     <!-- <button class="btn btn-primary">Follow</button> -->
                     <button class="btn btn-outline-primary">Message</button>
                   </div>
@@ -199,35 +217,35 @@
                   </div>
                 </div>
                 <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Mobile</h6>
-                  </div>
-                  <div id="mobile" class="col-sm-9 text-secondary form-input">
-                    (320) 380-4539
-                  </div>
-                </div>
-                <hr>
+                
                 <!-- <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Address</h6>
                   </div>
                   <div id="address" class="col-sm-9 text-secondary form-input">
-                    Bay Area, San Francisco, CA
+                    Biratchowk, Morang
                   </div>
                 </div> -->
                 <hr>
                 <!-- CONTACT INFO -->
                 
                   <h6 class="heading-small text-muted mb-4">contact information</h6>
-        
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div id="mobile" class="col-sm-9 text-secondary form-input">
+                      9812394582
+                    </div>
+                  </div>
+                  <hr>
                         <div class="row">
         
                           <div class="col-sm-3">
                             <h6 class="mb-0">Address</h6>
                           </div>
                           <div id="address" class="col-sm-9 text-secondary form-input">
-                            {{user.address}}
+                            {{user.admin.address}}
                             <!-- <input id = "name_edit" type="text" class="form-control" value="John Doe"> -->
                           </div>
                         </div>
@@ -255,7 +273,7 @@
                             <h6 class="mb-0">Mobile</h6>
                           </div>
                           <div id="mobile" class="col-sm-9 text-secondary form-input">
-                            (320) 380-4539
+                            9812394582
                           </div>
                         </div>
                         <hr>
@@ -263,8 +281,8 @@
                           <div class="col-sm-3">
                             <h6 class="mb-0">Address</h6>
                           </div>
-                          <div id="address" class="col-sm-9 text-secondary form-input">
-                            Bay Area, San Francisco, CA
+                          <div id="addresmms" class="col-sm-9 text-secondary form-input">
+                            
                           </div>
                         </div>
                         <hr>
