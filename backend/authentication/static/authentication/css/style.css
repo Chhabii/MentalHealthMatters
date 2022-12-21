@@ -1,5 +1,12 @@
 body{
-    background-color: #19c6e9 !important;
+    /* background-color: #397480 !important; */
+    width: 100%;
+    height: 100vh;
+    background-image:url("/static/authentication/images/circle-scatter-haikei.svg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
 }
 .error{
     color:red;
@@ -12,89 +19,83 @@ body{
         padding: 5px;
         border-radius: 30px;
         overflow: hidden;
-        background: rgba(5, 4, 4, 0.1);
+        background: rgba(41, 39, 39, 0.1);
         backdrop-filter: blur(7px);
         opacity: 0.7;
-        
+}
+/* .formbox {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px;
+    background: transparent;
+    border-radius: 30px;
+    overflow: hidden;
 
-    }
-    .formbox {
-        width: 380px;
-        height: 480px;
-        position: relative;
-        margin: 6% auto;
-        padding: 5px;
-        background: transparent;
-        border-radius: 30px;
-        overflow: hidden;
-    
-    }
-    .inoutfield {
-        width: 300px;
-        height:40px;
-        padding: 10px 0;
-        margin: 5px 0;
-        outline: none;
-        background: transparent;
-        border-radius: 15px;
-        font-family: 'Helvetica', FontAwesome, sans-serif;
-    }
-    .inputgroup {
-        top: 150px;
-        width: 280px;
-        transition: .5s;
-        position: absolute;
-    }
-    .formbox {
-        width: 380px;
-        height: 440px;
-        position: relative;
-        margin: 6% auto;
-        padding: 5px;
-        border-radius: 30px;
-        overflow: hidden;
-        background: rgba(5, 4, 4, 0.1);
-        backdrop-filter: blur(7px);
-        opacity: 0.7;
-    
-    }    
-    .centermalanu{
-        margin-left: 30px;
-        margin-right: auto;
-    }
-   input::placeholder{
-        color:black;
-        font-weight: bold;
-        padding-left: 5%;
-    }
-    input:focus::placeholder {
-        color: transparent;
-    }
-    /* .errorkoclass{
-        margin-left: 30px;
-        margin-right: auto;
-        position: relative;
-       
+} */
+.inoutfield {
+    color:white;
+    width: 300px;
+    height:40px;
+    padding: 10px 0;
+    margin: 5px 0;
+    outline: none;
+    background: transparent;
+    border-radius: 15px;
+    font-family: 'Helvetica', FontAwesome, sans-serif;
+}
+.inputgroup {
+    top: 150px;
+    width: 280px;
+    transition: .5s;
+    position: absolute;
+}
+.formbox {
+    width: 380px;
+    height: 440px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(7px);
+    opacity: 0.7;
 
-
-
-    } */
-    .tuppoko{
-        
-        font-weight: 400;
-        text-align: center;
-    }
-    .formboxsignup {
-        width: 450px;
-        height: 600px;
-        position: relative;
-        margin: 6% auto;
-        padding: 5px;
-        border-radius: 30px;
-        overflow: hidden;
-        background: rgba(5, 4, 4, 0.1);
-        backdrop-filter: blur(7px);
-        opacity: 0.7;
+}    
+.centermalanu{
+    margin-left: 30px;
+    margin-right: auto;
+}
+input::placeholder{
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    padding-left: 5%;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+/* .errorkoclass{
+    margin-left: 30px;
+    margin-right: auto;
+    position: relative;
+} */
+.tuppoko{
     
-    }    
-    
+    font-weight: 400;
+    text-align: center;
+}
+.formboxsignup {
+    width: 450px;
+    height: 600px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(7px);
+    opacity: 0.7;
+
+}    

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,71 +11,117 @@
 
     <title>Dashboard | MHM</title>
     <style>
-        .success{
-            margin-left:10px;
-            color:rgb(9, 109, 146);
+        body {
+            overflow: auto;
         }
-        .loginsuccess{
+
+        .success {
+            margin-left: 10px;
+            color: rgb(9, 109, 146);
+        }
+
+        .loginsuccess {
             background-color: rgb(221, 243, 249);
             text-align: center;
         }
-        .nav-background{
+
+        .nav-background {
             background-color: rgb(9, 109, 146);
         }
-        .jumbo-color{
+
+        .jumbo-color {
             background-color: rgb(169, 211, 226);
+        }
+
+        @media (min-width: 576px) {
+            .mt-3 {
+                margin-top: 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="loginsuccess">
         {% if messages %}
         {% for message in messages %}
-            <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
         {% endfor %}
         {% endif %}
     </div>
-    
+
     <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
-    {% if user.user_type == '1' %}
-    <h5>You are logged in as Admin</h5>
+    <!-- {% if user.user_type == '1' %}
+    <h5 style="margin-left: 10px;">You are logged in as Admin</h5>
     {% elif user.user_type == '2' %}
     <h5>You are logged in as Teacher</h5>
     {% elif user.user_type == '3' %}
-    <h5>You are logged in as Student</h5>
+    <h5 style="margin: 10px; color:#234ea6">You are logged in as Student</h5>
     {% else %}
-    <h5>No user type set</h5>
+    <h5>No user type set</h5> -->
 
-    {% endif %}
+    <!-- {% endif %} -->
 
-    
-    <div class="container-fluid my-5 " >
+
+    <div class="container-fluid my-3 ">
         <div class="row">
-            <div class="col-6">
-                <h2 class="text-center">Fav Posts</h2>
+            <div class="col-md-5 col-sm-12 mt-3 mx-3" style="background-color: rgb(9, 109, 146);border-radius:15px;">
+                <h2 class="text-center my-3" style="color: white;">Fav Posts</h2>
                 <div style="overflow-y: scroll;height:670px;">
                     {% for p in post %}
-                        <div class="jumbotron jumbo-color">
-                
-                            <h1 class="display-5">{{p.title}}</h1>
-                            <p class="lead">{{p.abstract}}</p>
-                            <hr class="my-4">
-                            <p>{{p.published_date}}</p>
-                            <p> Author: <strong>{{p.author}}</strong></p>
-                
-                        </div>
+                    <div class="jumbotron jumbo-color" style="border-radius:15px ;">
+
+                        <h1 class="display-5">{{p.title}}</h1>
+                        <p class="lead">{{p.abstract}}</p>
+                        <hr class="my-4">
+                        <p>{{p.published_date}}</p>
+                        <p> Author: <strong>{{p.author}}</strong></p>
+
+                    </div>
                     {% endfor %}
                 </div>
-            
+
             </div>
-            <div class="col-6">
-                <h2 class="text-center">Student Information</h2>
+            <div class="col-md-6 col-sm-12 mt-3 mx-3" style="background-color: rgb(9, 109, 146); border-radius:15px;">
+                <h2 class="text-center my-3" style="color: white;">Your Infos</h2>
+                <div style="overflow-y: scroll;height:670px;">
+                    <div class="row mx-3">
+                        <div class="col-12"
+                            style="background-color: rgb(169, 211, 226);;overflow-y:scroll;height: 300px; border-radius: 15px;">
+                            <h2 class="my-3">Your recent Stress Level was <strong>Actute</strong>.</h2>
+                            <h4>Major Issues: </h4>
+                            <ul>
+                                <li>Financial Issue</li>
+                                <li>Headache</li>
+                                <li>Friend Issue</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="row mx-3">
+                        <div class="col-md-5 col-sm-12 my-3 "
+                            style="background-color: rgb(169, 211, 226);;overflow-y:scroll;height: 330px; border-radius: 15px;">
+                            <h2 class="my-3">Your Health Files :</h2>
+                            <h4>Upload: </h4>
+
+
+                        </div>
+                        <div class="col-md-6 col-sm-12 my-3 mx-3"
+                            style="background-color: rgb(169, 211, 226);;overflow-y:scroll;height: 330px; border-radius: 15px;">
+                            <h2 class="my-3">Your Education Files :</h2>
+                            <h4>Upload: </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-    
+
 
 
     <script src="{% static 'authentication/js/jquery.js' %}"></script>
@@ -82,4 +129,5 @@
     <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
 
 </body>
+
 </html>

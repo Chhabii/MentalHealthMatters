@@ -6,14 +6,24 @@
 /* @font-face {
     font-family: Roboto;
     src: url(backend\pages\static\pages\font\Roboto-Regular.ttf);
-  } */
+} */
+.navbar-toggler {
+    color: red;
+  }
+
+.navbar-toggler:hover {
+    color: red;
+}
+.navbar-toggler-icon{
+    color:red !important;
+}
 
 
 
 .hero{
     width: 100%;
     height: 100vh;
-    background-image: url("/static/pages/images/buddha.jpg");
+    background-image: url("/static/pages/images/circle-scatter-haikei.svg");
     background-position: center;
     background-size: cover;
     position: relative;

@@ -5,7 +5,7 @@
 <!-- <div class="col-sm-12 text-light" style="background-color:rgb(192, 238, 255);border-radius: 10px;"> -->
 
 <div class="formbox">
-    <h3 style="text-align: center;margin-top: 60px;letter-spacing: 7px;">LOGIN</h3>
+    <h3 style="text-align: center;color:white;margin-top: 60px;letter-spacing: 7px;">LOGIN</h3>
     <form class="inputgroup" action="" method="post" novalidate>
         {% csrf_token %}
         <div class="centermalanu">
@@ -16,9 +16,10 @@
             {% endif %}
         </div>
         <div class="centermalanu">
-            {% for fm in form %} <!--login ko edit garne-->
+            {% for fm in form %}
+            <!--login ko edit garne-->
             <div class="form-group">
-                {{ fm }} <p style="color: red;">{{ fm.errors|striptags }}</p>
+                {{ fm }} <small class="text-warning">{{fm.errors|striptags}}</small>
             </div>
             {% endfor %}
 
@@ -33,7 +34,8 @@
         <button type="button" class="inoutfield"><a style="text-decoration: none;color: white;"
                 class="loginsignup" href="{% url 'signup' %}">SignUp</a>
     </div> -->
-    <p style="margin-top: 80%;margin-bottom: 0;text-align: center;">Not a member yet?<a href="{% url 'signup' %}">Register</a></p>
+    <p style="margin-top: 80%;margin-bottom: 0;text-align: center;color:white">Not a member yet? <a
+            href="{% url 'signup' %}">Register</a></p>
 </div>
 
 {% endblock %}

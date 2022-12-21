@@ -3,7 +3,7 @@
 {% block title %}ChangePassword{% endblock %}
 {% block content %}
     <div class="formbox">
-        <h3 style="text-align: center;margin-top: 20px;">CHANGE PASSWORD</h3>
+        <h3 style="text-align: center;margin-top: 20px; color:white">CHANGE PASSWORD</h3>
         <form class="mx-5" action="" method="post" novalidate>
             {% csrf_token %}
             {% if form.non_field_errors %}
@@ -14,14 +14,14 @@
     
                 {% for fm in form %}
                 <div class="form-group">
-                    {{fm}} {{fm.errors|striptags}}
+                    {{fm}} <small class="text-warning">{{fm.errors|striptags}}</small>
                 </div>
                 {% endfor %}
                 <input class="inoutfield" type="submit" value="Save">
             </form>
     
         </form>
-        <p style="text-align:center;margin-top: 7px;"><a href="{% url 'signup' %}" style=" text-decoration: none;color: black;">Return home</a></p>
+        <p style="text-align:center;margin-top: 7px;"><a href="{% url 'signup' %}" style=" text-decoration: none;color: rgb(255, 255, 255);">Return home</a></p>
         <!-- <button type="button" class="btn btn-success mt-3 mb-3 mx-5"><a style="text-decoration: none;color: white;" class ="loginsignup"a href="{% url 'signup' %}">Return Home</a> -->
 
     </div>
