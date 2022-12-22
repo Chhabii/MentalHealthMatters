@@ -25,7 +25,10 @@ class Admin(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    object = models.Manager()  
+    object = models.Manager()
+
+    def __str__(self):
+        return self.admin.first_name+ " "+ self.admin.last_name
 
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
@@ -44,6 +47,9 @@ class Teacher(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     object = models.Manager()
 
+    def __str__(self):
+        return self.teacher.first_name+ " "+ self.teacher.last_name
+
 class Student(models.Model):
     id = models.AutoField(primary_key=True)
     student = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
@@ -61,6 +67,9 @@ class Student(models.Model):
     section = models.CharField(max_length=100)
     faculty = models.CharField(max_length=100)
     object = models.Manager()
+
+    def __str__(self):
+        return self.student.first_name+ " "+ self.student.last_name
 
     
 
