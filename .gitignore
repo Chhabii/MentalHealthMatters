@@ -3,3 +3,4 @@ Pipfile
 Pipfile.lock
 *.pyc
 *.sqlite3
+backend/db.sqlite3
