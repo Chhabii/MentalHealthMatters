@@ -21,6 +21,8 @@ class Admin(models.Model):
     # email = models.CharField(max_length=100)
     # password = models.CharField(max_length=300)
     address = models.TextField()
+    phone_number = models.CharField(max_length=100, default="Not Set", null=True)
+
 
 
     created_at = models.DateTimeField(auto_now=True)
@@ -43,6 +45,8 @@ class Teacher(models.Model):
 
 
     address = models.TextField()
+    phone_number = models.CharField(max_length=100, default="Not Set", null=True)
+
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     object = models.Manager()
