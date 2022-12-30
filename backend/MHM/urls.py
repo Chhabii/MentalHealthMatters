@@ -7,6 +7,7 @@ urlpatterns = [
     path("",include("pages.urls")),
     path("account/",include("authentication.urls")),
     path('blog/',include("blog.urls")),
+    path('community/',include("chat.urls")),
 
 
 ]
