@@ -129,15 +129,15 @@
                     <p class="text-secondary mb-1">@{{user.username}}</p>
                     
                       {% if user.user_type == '1'%}
-                      <p class="text-muted font-size-sm">{{user.admin.address}}</p>
-                      <p class="text-muted font-size-sm">Admin</p>
+                      <p class="text-secondary mb-1">{{user.admin.address}}</p>
+                      <p class="text-secondary mb-1">Admin</p>
 
                       {% elif user.user_type == '2'%}
-                      <p class="text-muted font-size-sm">{{user.teacher.address}}</p>
-                      <p class="text-muted font-size-sm">Teacher</p>
+                      <p class="text-secondary mb-1">{{user.teacher.address}}</p>
+                      <p class="text-secondary mb-1">Teacher</p>
                       {% elif user.user_type == '3'%}
-                      <p class="text-muted font-size-sm">{{user.student.address}}</p>
-                      <p class="text-muted font-size-sm">Student</p>
+                      <p class="text-secondary mb-1">{{user.student.address}}</p>
+                      <p class="text-secondary mb-1">Student</p>
                       {% endif %}
                     <!-- <button class="btn btn-primary">Follow</button> -->
                     <button class="btn btn-outline-primary">Message</button>
@@ -228,64 +228,118 @@
                 </div> -->
                 <hr>
                 <!-- CONTACT INFO -->
-                
-                  <h6 class="heading-small text-muted mb-4">contact information</h6>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div id="mobile" class="col-sm-9 text-secondary form-input">
-                      9812394582
-                    </div>
+                <!-- FOR ADMIN -->
+                {% if user.user_type == '1' %}
+                <h6 class="heading-small text-muted mb-4">contact information</h6>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
                   </div>
-                  <hr>
-                        <div class="row">
-        
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Address</h6>
-                          </div>
-                          <div id="address" class="col-sm-9 text-secondary form-input">
-                            {{user.admin.address}}
-                            <!-- <input id = "name_edit" type="text" class="form-control" value="John Doe"> -->
-                          </div>
+                  <div id="mobile" class="col-sm-9 text-secondary form-input">
+                    {{user.admin.phone_number}}
+                  </div>
+                </div>
+                <hr>
+                      <div class="row">
+      
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Address</h6>
                         </div>
-                        <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Guardian Name</h6>
-                          </div>
-                          <div id="guardian" class="col-sm-9 text-secondary form-input">
-                            {{user.guardian}}
-                          </div>
+                        <div id="address" class="col-sm-9 text-secondary form-input">
+                          {{user.admin.address}}
+                          <!-- <input id = "name_edit" type="text" class="form-control" value="John Doe"> -->
                         </div>
-                        <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Guardian Contact Number</h6>
-                          </div>
-                          <div id="guardian_contact" class="col-sm-9 text-secondary form-input">
-                            {{user.guardian_contact}}
-                          </div>
+                      </div>
+                      <hr>
+                <!-- FOR TEACHER -->
+                {% elif user.user_type == '2' %}
+                <h6 class="heading-small text-muted mb-4">contact information</h6>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                  </div>
+                  <div id="mobile" class="col-sm-9 text-secondary form-input">
+                    {{user.teacher.phone_number}}
+                  </div>
+                </div>
+                <hr>
+                      <div class="row">
+      
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Address</h6>
                         </div>
-                        <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Mobile</h6>
-                          </div>
-                          <div id="mobile" class="col-sm-9 text-secondary form-input">
-                            9812394582
-                          </div>
+                        <div id="address" class="col-sm-9 text-secondary form-input">
+                          {{user.teacher.address}}
+                          <!-- <input id = "name_edit" type="text" class="form-control" value="John Doe"> -->
                         </div>
-                        <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Address</h6>
-                          </div>
-                          <div id="addresmms" class="col-sm-9 text-secondary form-input">
-                            
-                          </div>
+                      </div>
+                      <hr>
+                
+                <!-- FOR STUDENT -->
+                {% elif user.user_type == '3' %}
+                <h6 class="heading-small text-muted mb-4">contact information</h6>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                  </div>
+                  <div id="mobile" class="col-sm-9 text-secondary form-input">
+                    {{user.student.phone_number}}
+                  </div>
+                </div>
+                <hr>
+                      <div class="row">
+      
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Address</h6>
                         </div>
-                        <hr>
+                        <div id="address" class="col-sm-9 text-secondary form-input">
+                          {{user.student.address}}
+                          <!-- <input id = "name_edit" type="text" class="form-control" value="John Doe"> -->
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Guardian Name</h6>
+                        </div>
+                        <div id="guardian" class="col-sm-9 text-secondary form-input">
+                          {{user.student.guardian}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Guardian Contact Number</h6>
+                        </div>
+                        <div id="guardian_contact" class="col-sm-9 text-secondary form-input">
+                          {{user.student.guardian_phone_number}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Faculty</h6>
+                        </div>
+                        <div id="faculty" class="col-sm-9 text-secondary form-input">
+                          {{user.student.faculty}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Grade</h6>
+                        </div>
+                        <div id="grade" class="col-sm-9 text-secondary form-input">
+                          {{user.student.grade}}
+                        </div>
+                      </div>
+                      <hr>
+
+                {% endif %}
+
+
+                
+
                 <div class="row">
                   <div class="col-sm-12">
                     <input type="submit" class="btn btn-info " id="edit"  value="Update Profile">
