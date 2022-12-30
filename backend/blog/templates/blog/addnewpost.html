@@ -44,9 +44,12 @@
     </div>
     <form action="" method="post">
         {% csrf_token %}
-
-        {{form.media}}
-        {{form.as_p}}
+        <div class="centermalanu">
+            {{form.media}}
+            {% for fm in form %}
+                <h1 style="color:red;">{{fm.label_tag}}</h1>{{fm}}
+            {% endfor %}
+        </div>
         <input type="submit" value="Post">
     </form>
 
