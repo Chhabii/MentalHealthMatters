@@ -7,14 +7,16 @@
     <h3 style="text-align: center;margin-top: 60px;letter-spacing: 7px; color:white">SIGNUP</h3>
     <form class="" action="" method="post" novalidate>
         {% csrf_token %}
+        
         <div class="centermalanu">
             {% for fm in form %}
             <div class="form-group">
                 {{fm}}<br> <small class="text-warning">{{fm.errors|striptags}}</small>
-
-
+                
+                
                 {% endfor %}
             </div>
+            <input type="hidden" name="user_type" id="user_type" value="{{ user_type }}">
             <input class="inoutfield" type="submit" value="SignUp">
     </form>
     <a href="{% url 'login' %}" style="text-decoration: none;color: rgb(255, 255, 255);text-align: center;"><br>Already have

@@ -12,14 +12,45 @@ from .models import CustomUser, Student, Admin, Teacher
 
 from django.views.decorators.csrf import csrf_exempt
 
+def chooserole(request):
+    if not request.user.is_authenticated:
+        if request.method == "POST":
+            if 'u_role' in request.POST:
+                request.session['user_type'] = request.POST['u_role']
+                print("from session: user_type = "+request.session['user_type'])
+                return HttpResponseRedirect('/account/signup')
+            else:
+                print('No user role selected')
+
+    return render(request,'authentication/chooserole.html')
+
+
+   
 @csrf_exempt
 def sign_up(request):
     if not request.user.is_authenticated:
+        if 'user_type' not in request.session:
+               return HttpResponseRedirect('/account/role')
+
+
         if request.method == "POST":
+            user_type = '3'
+            if 'u_role' in request.POST:
+                user_type = request.POST['u_role']
+        
+            print(user_type)
             fm = SignUpForm(request.POST)
             if fm.is_valid():
+                user = fm.save(commit = False)
+                user.user_type = request.session['user_type']
+                user.save()
+                # fm.cleaned_data['user_type'] = request.session['user_type']
                 messages.success(request,'Account Created Successfully!!')
-                fm.save()
+                
+                # fm.save()
+
+                # if user_type == '3':
+
         else:
             fm = SignUpForm()
         return render(request,'authentication/signup.html',{'form':fm})
