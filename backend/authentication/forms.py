@@ -17,6 +17,7 @@ class SignUpForm(UserCreationForm):
             'first_name' : forms.TextInput(attrs={'placeholder':'  Firstname','class':'inoutfield'}),
             'last_name' : forms.TextInput(attrs={'placeholder':'  Lastname','class':'inoutfield'}),
             'email' : forms.TextInput(attrs={'placeholder':'  Email','class':'inoutfield'}),
+            # 'user_type' : forms.MultipleChoiceField(widget=forms.RadioSelect,choices= CustomUser.user_type)
             # 'password' : forms.TextInput(attrs={'placeholder':'Password','class':'inoutfield'}),
 
             

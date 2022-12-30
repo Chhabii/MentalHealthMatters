@@ -9,8 +9,10 @@ class CustomUser(AbstractUser):
         (2,'Teacher'),
         (3,'Student'),
     )
-    user_type = models.CharField(choices=user,max_length=50,default=3)
+    user_type = models.CharField(choices=user,max_length=50,default='3')
     # profile_pic = models.ImageField(upload_to='media/profile_pic')
+    def __str__(self):
+        return self.user_type
 
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
@@ -24,7 +26,7 @@ class Admin(models.Model):
     phone_number = models.CharField(max_length=100, default="Not Set", null=True)
 
 
-
+    objects = models.Manager()  
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     object = models.Manager()
@@ -46,6 +48,7 @@ class Teacher(models.Model):
 
     address = models.TextField()
     phone_number = models.CharField(max_length=100, default="Not Set", null=True)
+    objects = models.Manager()  
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
@@ -55,14 +58,8 @@ class Teacher(models.Model):
         return self.teacher.first_name+ " "+ self.teacher.last_name
 
 class Student(models.Model):
-    id = models.AutoField(primary_key=True)
-    student = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
-
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     class_teacher = models.ForeignKey(Teacher,on_delete=models.DO_NOTHING,null=True,blank=True)
-    # username = models.CharField(max_length=100)
-    # first_name = models.CharField(max_length=100)
-    # last_name = models.CharField(max_length=100)
-    # email = models.CharField(max_length=100)
     roll = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
     guardian = models.CharField(max_length=100)
@@ -70,39 +67,41 @@ class Student(models.Model):
     grade = models.CharField(max_length=100)
     section = models.CharField(max_length=100)
     faculty = models.CharField(max_length=100)
-    object = models.Manager()
-
-    def __str__(self):
-        return self.student.first_name+ " "+ self.student.last_name
-
-    
-
-    
-    password = models.CharField(max_length=300)
     address = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()  
+  
+  
+    def __str__(self):
+        return self.admin.first_name+ " "+ self.admin.last_name
+
+    
+
+    
     
 
 
 @receiver(post_save,sender=CustomUser)
 def create_user_profile(sender,instance,created,**kwargs):
     if created:
-        if instance.user_type==1:
-            Admin.object.create(admin=instance)
-        if instance.user_type==2:
-            Teacher.object.create(teacher=instance)
-        if instance.user_type==3:
-            Student.object.create(student=instance)
+        # print('created signal')
+        if instance.user_type=='1':
+            Admin.objects.create(admin=instance)
+        if instance.user_type=='2':
+            Teacher.objects.create(teacher=instance)
+        if instance.user_type=='3':
+            Student.objects.create(admin=instance)
         
 @receiver(post_save,sender=CustomUser)
 def save_user_profile(sender,instance,**kwargs):
 
-        if instance.user_type==1:
+        if instance.user_type=='1':
             instance.admin.save()
-        if instance.user_type==2:
+        if instance.user_type=='2':
             instance.teacher.save()
-        if instance.user_type==3:
+        if instance.user_type=='3':
             instance.student.save()
         
         

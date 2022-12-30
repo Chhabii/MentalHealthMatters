@@ -1,0 +1,208 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}">
+<style>
+    .container {
+        justify-content: center;
+        /* margin: 30 30 30 30; */
+    }
+    .head {
+        margin-top: 40px;
+        margin-bottom: 60px;
+        /* margin-left: 150px; */
+    }
+    .continue {
+        margin-top: 20px;
+    }
+    .card {
+        cursor: pointer;
+        border: 1px solid rgb(196, 203, 207);
+        /* box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);  */
+    }
+    /* .card:hover{
+        box-shadow: 0px 5px 10px 0px rgb(10, 114, 175);
+        transform: translateY(-5px);
+} */
+</style> 
+<div class="container">
+    <div class="head">
+        <div class="row justify-content-md-center">
+          <div class="col-sm-6">
+            <h2 class="text-center">Choose your account type</h2>
+
+          </div>
+          </div>
+
+          <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+              
+  
+              <h6 class="text-muted text-center">Just one step away from creating account</h6>
+            </div>
+        </div>
+    </div>
+        
+          
+        
+      
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="u_role" id="u_role" value="">
+<div class="row justify-content-md-center options" id = "options">
+    <div class="col-sm-3">
+      <div class="card text-center h-70">
+        <img src="{% static 'authentication/images/vecteezy_happy-university-students_.svg' %}"
+         class="card-img-top" 
+         alt="..."
+         height="300"
+         width="300">
+        <div class="card-body">
+          <h5 class="card-title" style="margin-top:-2rem;">Student</h5>
+          <p class="card-text text-muted">Lots of community groups to join, relieve your stress here.</p>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card text-center h-70">
+        <img src="{% static 'authentication/images/7504540_3685322.svg' %}"
+         class="card-img-top" 
+         alt="..."
+         height="300"
+         width="300">
+        <div class="card-body">
+          <h5 class="card-title" style="margin-top:-2rem;">Teacher</h5>
+          <p class="card-text text-muted">Keep track of Student Mental Health from the dashboard.</p>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+</div>
+<div class="row justify-content-md-center continue">
+    <div class="col-sm-1">
+      <input type="submit" name="submit" id="submit" class="btn btn-secondary" value="Continue" disabled>
+
+    </div>
+    </div>
+
+</div>
+</form>
+<script>
+    // let card = document.querySelectorAll('.card');
+    // card.forEach(element => {
+    //     element.onclick = alert('hello');
+        
+    // });
+    let role = document.getElementById('options');
+    let hid_inp = document.getElementById('u_role');
+    let submit = document.getElementById('submit');
+    let first_card = role.childNodes[1].childNodes[1];
+    let second_card = role.childNodes[3].childNodes[1];
+    console.log(first_card);
+    console.log(second_card);
+    let flag = 0;
+    let flag2 = 0
+
+    first_card.onclick = function() {
+        if (flag) {//unclick
+            // first_card.style.boxShadow = "";
+            hid_inp.setAttribute('value','');
+            submit.setAttribute('disabled','');
+            first_card.style.border = "1px solid rgb(207, 196, 196)";
+            second_card.style.border = "";
+            flag = 0;
+            flag2 = 0;
+            
+        }
+        else {//click
+            hid_inp.setAttribute('value','3');
+            submit.setAttribute('class','btn btn-primary');
+            submit.removeAttribute('disabled');
+            first_card.style.border = "2px solid rgb(10, 114, 175)";//blue
+            second_card.style.border = "";
+
+            // first_card.style.boxShadow = "";
+
+            
+            flag = 1;
+            flag2 = 0;
+        }
+        // alert('hello');
+        
+    }
+    first_card.onmouseover = function() {
+        // alert('hello');
+        first_card.style.boxShadow = "0px 5px 10px 0px rgb(10, 114, 175)";
+        first_card.style.transform = "translateY(-5px)";
+
+    }
+    first_card.onmouseout = function() {
+        // alert('hello');
+        first_card.style.boxShadow = "";
+        first_card.style.transform = "";
+
+
+    }
+
+    second_card.onclick = function() {
+        
+        if (flag2) {//unclick
+            // first_card.style.boxShadow = "";
+            hid_inp.setAttribute('value','')
+            submit.setAttribute('disabled','');
+            first_card.style.border = "";
+            second_card.style.border = "1px solid rgb(207, 196, 196)";
+
+            flag2 = 0;
+            flag = 0;
+            
+        }
+        else {//click
+            hid_inp.setAttribute('value','2')
+            submit.setAttribute('class','btn btn-primary');
+            submit.removeAttribute('disabled');
+            first_card.style.border = "";
+            second_card.style.border = "2px solid rgb(10, 114, 175)";
+
+            // first_card.style.boxShadow = "";
+
+            
+            flag2 = 1;
+            flag = 0;
+        }
+        // alert('hello');
+        
+    }
+    first_card.onmouseover = function() {
+        // alert('hello');
+        first_card.style.boxShadow = "0px 5px 10px 0px rgb(10, 114, 175)";
+        first_card.style.transform = "translateY(-5px)";
+
+    }
+    first_card.onmouseout = function() {
+        // alert('hello');
+        first_card.style.boxShadow = "";
+        first_card.style.transform = "";
+
+
+    }
+
+    second_card.onmouseover = function() {
+        // alert('hello');
+        second_card.style.boxShadow = "0px 5px 10px 0px rgb(10, 114, 175)";
+        second_card.style.transform = "translateY(-5px)";
+
+    }
+    second_card.onmouseout = function() {
+        // alert('hello');
+        second_card.style.boxShadow = "";
+        second_card.style.transform = "";
+
+
+    }
+   
+</script>
