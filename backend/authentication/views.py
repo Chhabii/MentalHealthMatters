@@ -115,6 +115,12 @@ def profileupdate(request):
     username = request.POST.get('username')
     email = request.POST.get('email')
     address = request.POST.get('address')
+    phone_number = request.POST.get('mobile')
+    guardian = request.POST.get('guardian')
+    guardian_contact_number = request.POST.get('guardian_contact')
+    faculty = request.POST.get('faculty')
+    grade = request.POST.get('grade')
+    
     # print(first_name,last_name,username)
     try:
         customuser = CustomUser.objects.get(id = request.user.id)
@@ -135,19 +141,38 @@ def profileupdate(request):
         customuser.save()
         # print(request.user.user_type)
         if customuser.user_type == '1':
+            # print('hello')
+            customuser.admin.phone_number = phone_number
+            customuser.admin.address = address
+
+            customuser.admin.save()
+        elif customuser.user_type == '2':
+            customuser.teacher.phone_number = phone_number
+            customuser.teacher.address = address
+            customuser.teacher.save()
+
+        elif customuser.user_type == '3':
             print('hello')
-            adminUser = Admin.object.get(id = request.user.id)
+            # studentUser = CustomUser.objects.get(id = request.user.id)
 
-            adminUser.address = address
+            customuser.student.address = address
+            customuser.student.phone_number = phone_number
+            customuser.student.guardian = guardian
+            customuser.student.guardian_phone_number = guardian_contact_number
+            customuser.student.faculty = faculty
+            customuser.student.grade = grade
+            
+            customuser.student.save()
 
-            adminUser.save()
-
+            
 
         messages.success(request,'Profile Updated!!')
         # return HttpResponseRedirect('authentication/profile.html')
         return redirect('profile')
-    except:
+    except Exception as e:
+        print(e)
         messages.error(request,'Something went wrong. Try again!!')
+        
         
     return render(request,'authentication/profile.html')
     
