@@ -19,7 +19,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "channels",
     "ckeditor",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -30,7 +29,7 @@ INSTALLED_APPS = [
     "authentication",
     "pages",
     "blog",
-    "chat",
+
 ]
 
 MIDDLEWARE = [
@@ -61,7 +60,7 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = "MHM.asgi.application"
+WSGI_APPLICATION = "MHM.wsgi.application"
 
 # ASGI_APPLICATION = "MHM.asgi.application"
 
@@ -122,12 +121,3 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "authentication.CustomUser"
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
-}
