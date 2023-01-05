@@ -3,13 +3,13 @@
 <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.css' %}"> 
 <style>
   body{
-    margin-top:20px;
+    
     color: #1a202c;
     text-align: left;
     background-color: #e2e8f0;    
 }
 .main-body {
-    padding: 15px;
+    margin-left: 0%;
 }
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
@@ -23,7 +23,7 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
+    border: 2px solid black;
     border-radius: .25rem;
 }
 
@@ -83,12 +83,24 @@
 }
 .nav-background{
     background-color: rgb(9, 109, 146);
+    width: 100%;
 }
 .jumbo-color{
     background-color: rgb(169, 211, 226);
 }
-</style>
+.navbar{
+  width: 100%;
 
+  margin-top: 0;
+}
+.container{
+  margin-top: 10px;
+}
+</style>
+ <div class="navbars">
+   
+      {% include 'authentication/navbar.html' %}
+  </div>
 <div class="container">
   <div class="main-body">
     <div>
@@ -102,10 +114,7 @@
       {% endfor %}
       {% endif %}
       </div>
-    <div class="container-fluid nav-background">
-   
-      {% include 'authentication/navbar.html' %}
-  </div>
+
 
   
         <!-- Breadcrumb -->
