@@ -10,9 +10,9 @@ class AddNewPost(forms.ModelForm):
 
     class Meta:
         model = BlogPost
-        fields = ['title','abstract','post','published_date']
+        fields = ['title','abstract','post']
         widgets = {
-            'title':forms.TextInput(attrs={'placeholder':'  title','class':'inoutfield'}),
-            'abstract':forms.TextInput(attrs={'placeholder':'  title','class':'inoutfield'}),
+            'title':forms.TextInput(attrs={'placeholder':'Write your title here.','class':'titlefield'}),
+            'abstract':forms.TextInput(attrs={'placeholder':'Brief your post.','class':'abstractfield'}),
 
         }
