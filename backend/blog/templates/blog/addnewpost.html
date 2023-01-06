@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,46 +12,98 @@
 
     <title>WriteBlog | MHM</title>
     <style>
-        .success{
-            margin-left:10px;
-            color:rgb(9, 109, 146);
+        .success {
+            margin-left: 10px;
+            color: rgb(9, 109, 146);
         }
-        .loginsuccess{
+
+        .loginsuccess {
             background-color: rgb(221, 243, 249);
             text-align: center;
         }
-        .nav-background{
-            background-color: rgb(9, 109, 146);
+
+        .nav-background {
+            /* background-color: rgb(9, 109, 146); */
+            background-color: #0288D1;
         }
 
-        .jumbo-color{
+        .jumbo-color {
             background-color: rgb(169, 211, 226);
         }
+
+        .titlefield {
+            color: white;
+            width: 30%;
+            height: 30%;
+            padding: 10px 0;
+            margin: 5px 0;
+            outline: none;
+            border-radius: 15px;
+            font-family: 'Helvetica', FontAwesome, sans-serif;
+            background-color: #0288D1;
+        }
+
+        .abstractfield {
+            color: white;
+            width: 30%;
+            height: 40%;
+            padding: 10px 0;
+            margin: 5px 0;
+            outline: none;
+            border-radius: 15px;
+            font-family: 'Helvetica', FontAwesome, sans-serif;
+            background-color: #0288D1;
+        }
+
+        input[type=submit] {
+            /* height: 50px;
+            padding: 5px 15px;
+            background: #ccc;
+            border: 0 none;
+            cursor: pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px; */
+            color:white;
+            background-color: #0288D1;
+            width: 60px;
+            height: 40px;
+            padding: 10px 0;
+            margin: 20px 0;
+            outline: none;
+            border-radius: 15px;
+            font-family: 'Helvetica', FontAwesome, sans-serif;
+        }
+
         /* .cke_contents {
             height: 500px;
         } */
         /* .textarea {
             height: 50px;
         } */
+
     </style>
 </head>
+
 <body>
     <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
     <!--Writing for blog from here-->
     <div class="col-sm-12">
-        <h1 class="text-dark my-5 text-center">Write Blog</h1>
+            <h1 class="my-3 text-center" style="color:#0288D1 ;">Add new Post</h1>
     </div>
     <form action="" method="post">
         {% csrf_token %}
         <div class="centermalanu">
             {{form.media}}
             {% for fm in form %}
-                <h1 style="color:red;">{{fm.label_tag}}</h1>{{fm}}
+            <h3 style="margin-top:20px; color: #0288D1;">{{fm.label_tag}}</h3>
+            {{fm}}
             {% endfor %}
-        </div>
+        <br>
+        <!-- <input type="submit" value="Post" > -->
         <input type="submit" value="Post">
+        </div>
     </form>
 
     <script src="{% static 'authentication/js/jquery.js' %}"></script>
@@ -58,4 +111,5 @@
     <script src="{% static 'authentication/js/bootstrap.js' %}"></script>
 
 </body>
+
 </html>
