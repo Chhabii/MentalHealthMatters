@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+    }
+    body{
+         display:flex;
+         min-height:100vh;
+         justify-content: flex-end;
+         align-items: flex-end;
+    }
+    footer{
+        background-color: rgb(9, 109, 146);
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footercontainer{
+        width: 100%;
+        padding: 70px 30px 20px;
+    }
+    footer .icons li{
+        list-style: none;
+    }
+    .icons{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        align-items: center;
+        margin: 10px 0;
+        flex-wrap: wrap;
+   }
+   .icons a{
+    list-style: none;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+   }
+   .icons a i{
+    font-size: 2em;
+    color: white;
+    margin: 0 10px;
+    opacity: 0.9;
+   }
+   .icons a:hover{
+    /* background-color: rgb(9, 109, 146); */
+    background-color: white;
+    transition: 0.5s;
+   }
+   .icons a:hover i{
+    color: white;
+    transition: 0.5s;
+   } 
+   .icons a i:hover{
+    color: white;
+    transition: 0.5s;
+   }
+   .footernav{
+    margin: 30px 0;
+   }
+   .footernav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+   }
+   .footernav ul li a{
+    color: white;
+    margin: 20px;
+    text-decoration: 20px;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+    /* list-style: none; */
+   }
+   .footernav ul li a:hover{
+    opacity: 1;
+   }
+   .footernav{
+    list-style: none;
+   }
+   footer p{
+    background-color: rgb(9, 109, 146);
+    text-align: center;
+    padding: 20px;
+    color:white;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+   }
+   @media (max-width:600px) {
+    .footernav ul{
+        flex-direction: column;
+    }
+    .footernav ul li{
+        width: 100%;
+        text-align: center;
+        margin:10px;
+    }
+   }
+</style>
+<body>
+    <footer>
+        <div class="footercontainer">
+            <div class="icons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footernav">
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Change password</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+                <p>Copyright &copy;2023|All Rights Reserved</p>
+            </div>
+        </div>
+        <!-- <div class="footerbottom">
+            <p>Copyright &copy;2023</p>
+        </div> -->
+    </footer>
+</body>
+</html>
