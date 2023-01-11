@@ -10,9 +10,8 @@ class CustomUser(AbstractUser):
         (3,'Student'),
     )
     user_type = models.CharField(choices=user,max_length=50,default='3')
-    # profile_pic = models.ImageField(upload_to='media/profile_pic')
-    def __str__(self):
-        return self.user_type
+    profile_pic = models.ImageField(upload_to='profile_pic/',null=True,blank=True)
+
 
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
@@ -32,7 +31,7 @@ class Admin(models.Model):
     object = models.Manager()
 
     def __str__(self):
-        return self.admin.first_name+ " "+ self.admin.last_name
+        return self.admin.first_name+ " "+ self.admin.last_name or ''
 
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
@@ -55,7 +54,7 @@ class Teacher(models.Model):
     object = models.Manager()
 
     def __str__(self):
-        return self.teacher.first_name+ " "+ self.teacher.last_name
+        return self.teacher.first_name+ " "+ self.teacher.last_name or ''
 
 class Student(models.Model):
     admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
