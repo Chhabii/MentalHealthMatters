@@ -121,7 +121,7 @@ def user_change_pass(request):
         return render(request,'authentication/changepass.html',{'form':fm})
     else:
         return HttpResponseRedirect('/account/login/')
-
+@csrf_exempt
 def profile(request):
     # if request.user.user_type == '1':
     #     user = Admin.object.get(id = request.user.id)
@@ -133,7 +133,7 @@ def profile(request):
 
     # else:
     user = CustomUser.objects.get(id = request.user.id)
-
+    print(user.profile_pic)
     context = {
         "user":user,
     }
@@ -141,6 +141,7 @@ def profile(request):
 
 @csrf_exempt
 def profileupdate(request):
+    profile_pic = request.FILES.get('profile_pic')
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
     username = request.POST.get('username')
@@ -164,11 +165,12 @@ def profileupdate(request):
 
         # )
         # userr.save()
- 
+        customuser.profile_pic = profile_pic
         customuser.first_name = first_name
         customuser.last_name = last_name
         customuser.username = username
         customuser.email = email
+        # print(str(customuser))
         customuser.save()
         # print(request.user.user_type)
         if customuser.user_type == '1':

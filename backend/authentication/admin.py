@@ -5,13 +5,13 @@ from django.contrib.auth.admin import UserAdmin
 
 
 class UserModel(UserAdmin):
-    # list_display = ['id','username','user_type']
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('id', 'username','first_name', 'last_name', 'user_type')}
-        ),
-    )
+    list_display = ['id','username','user_type']
+    # add_fieldsets = (
+    #     (None, {
+    #         'classes': ('wide',),
+    #         'fields': ('id', 'username','first_name', 'last_name', 'user_type')}
+    #     ),
+    # )
 
 # @admin.register(Admin)
 # class userAdmin(admin.ModelAdmin):
