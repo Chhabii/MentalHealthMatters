@@ -30,7 +30,7 @@
         }
 
         .nav-background {
-            background-color: #0288D1
+            background-color: #0288D1;
         }
         .jumbo-color {
             background-color: rgb(169, 211, 226);
@@ -147,7 +147,7 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="blogcontain">
+    <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
     <button class="adpst"><a href="{% url 'addnewpost' %}">Add new post</a></button>

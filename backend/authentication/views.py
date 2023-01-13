@@ -45,10 +45,22 @@ def sign_up(request):
                 user.user_type = request.session['user_type']
                 user.save()
                 # fm.cleaned_data['user_type'] = request.session['user_type']
-                messages.success(request,'Account Created Successfully!!')
+                # messages.success(request,'Account Created Successfully!!')
                 
                 # fm.save()
-
+                if user is not None:
+                    auth_login(request,user)
+                    user_type = user.user_type
+                    if user_type == '1':
+                        messages.success(request,'Logged in as admin!!')
+                    elif user_type == '2':
+                        messages.success(request,'Logged in as Teacher!!')
+                    elif user_type == '3':
+                        messages.success(request,'Logged in as Student!!')
+                    else:
+                        messages.success(request,'logged in but no user_type')
+                    return HttpResponseRedirect('/account/dashboard/')
+ 
                 # if user_type == '3':
 
         else:

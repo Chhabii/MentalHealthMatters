@@ -26,12 +26,28 @@
         }
 
         .nav-background {
-            background-color: rgb(9, 109, 146);
+            background-color:  #0288D1;;
         }
 
         .jumbo-color {
-            background-color: rgb(9, 109, 146);
+            background-color:  #0288D1;;
         }
+        /* width and height of the scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* background of the scrollbar */
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(221, 243, 249);
+        }
+
+        /* background of the scrollbar track */
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
 
         @media (min-width: 576px) {
             .mt-3 {
@@ -68,7 +84,7 @@
     <div class="container-fluid my-3">
         <div class="row">
             <div class="col-md-5 col-sm-12 mt-3 mx-3" style="background-color: #B3E5FC;border-radius:15px;">
-                <h2 class="text-center my-3" style="color: rgb(9, 109, 146);">Fav Posts</h2>
+                <h2 class="text-center my-3" style="color:  #0288D1;">Fav Posts</h2>
                 <div style="overflow-y: scroll;height:670px;">
                     {% for p in post %}
                     <div class="jumbotron jumbo-color" style="border-radius:15px ;">
@@ -85,11 +101,11 @@
 
             </div>
             <div class="col-md-6 col-sm-12 mt-3 mx-1" style="background-color: #B3E5FC; border-radius:15px;">
-                <h2 class="text-center my-3" style="color: rgb(9, 109, 146);">Your Infos</h2>
+                <h2 class="text-center my-3" style="color:  #0288D1;">Your Infos</h2>
                 <div style="overflow-y: scroll;height:670px;">
                     <div class="row mx-3">
                         <div class="col-12"
-                            style="background-color: rgb(9, 109, 146);;overflow-y:scroll;height: 300px; border-radius: 15px;">
+                            style="background-color:  #0288D1;overflow-y:scroll;height: 300px; border-radius: 15px;">
                             <h2 class="my-3" style="color:#B3E5FC;">Your recent Stress Level was <strong>Actute</strong>.</h2>
                             <h4 style="color:white;">Major Issues: </h4>
                             
@@ -103,14 +119,14 @@
                     </div>
                     <div class="row mx-3">
                         <div class="col-md-5 col-sm-12 my-3 "
-                            style="background-color: rgb(9, 109, 146);;overflow-y:scroll;height: 330px; border-radius: 15px;">
+                            style="background-color:  #0288D1;overflow-y:scroll;height: 330px; border-radius: 15px;">
                             <h4 class="my-3" style="color:white;">Your Health Files :</h4>
                             <h5 style="color:#B3E5FC;">Upload: </h5>
 
 
                         </div>
                         <div class="col-md-6 col-sm-12 my-3 mx-3"
-                            style="background-color: rgb(9, 109, 146);;overflow-y:scroll;height: 330px; border-radius: 15px;">
+                            style="background-color:  #0288D1;overflow-y:scroll;height: 330px; border-radius: 15px;">
                             <h4 class="my-3" style="color:white;">Your Education Files :</h4>
                             <h5 style="color:#B3E5FC;">Upload: </h4>
 
