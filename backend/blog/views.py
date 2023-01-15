@@ -5,6 +5,8 @@ from .forms import AddNewPost
 from  django.shortcuts import redirect,get_object_or_404
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect
+from django.db.models import Q
+
 
 
 # Create your views here.
@@ -43,6 +45,15 @@ def readmore(request,object_id):
     p = BlogPost.objects.get(id=object_id)
     return render(request,'blog/readmore.html',{'p':p})
 
+
+def search(request):
+    query=None
+    results=[]
+    if request.method=="GET":
+        query=request.GET.get('search')
+        results=BlogPost.objects.filter(Q(title__icontains=query) | Q(abstract__icontains=query))
+    return  render(request,'blog/search.html',{'query': query,
+                                          'results': results})
 
 @login_required(login_url='/account/login/')
 def delete_post(request,object_id):
