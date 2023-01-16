@@ -92,7 +92,7 @@
     <div class="col-sm-12">
             <h1 class="my-3 text-center" style="color:#0288D1 ;">Add new Post</h1>
     </div>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="centermalanu">
             {{form.media}}
