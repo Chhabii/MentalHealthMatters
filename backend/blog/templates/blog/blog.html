@@ -12,13 +12,14 @@
 
     <title>Dashboard | MHM</title>
     <style>
-        body{
+        body {
             margin: 0%;
             padding: 0%;
             background-color: #ffffff;
-            
+            overflow: auto;
+
         }
-        
+
         .success {
             margin-left: 10px;
             color: rgb(9, 109, 146);
@@ -32,6 +33,7 @@
         .nav-background {
             background-color: #0288D1;
         }
+
         .jumbo-color {
             background-color: rgb(169, 211, 226);
         }
@@ -39,7 +41,7 @@
         .blog-box {
             width: 400px;
             height: 400px;
-            
+
             border: 1px solid #ececec;
             border-radius: 5px;
             background-color: rgb(255, 255, 255);
@@ -49,10 +51,10 @@
         }
 
         #blog {
-            display:flex;
+            display: flex;
             flex-wrap: wrap;
             row-gap: 60px;
-            
+
         }
 
         .blogcontainer {
@@ -62,11 +64,12 @@
             margin-left: 70px;
             flex-wrap: wrap;
             gap: 60px;
-            
+
 
 
         }
-        .blogcontainer img{
+
+        .blogcontainer img {
             position: relative;
             width: 100%;
             height: 212px;
@@ -81,7 +84,7 @@
             font-weight: 700;
         }
 
-        
+
         .adddel {
             color: rgb(2, 2, 1);
             border: none;
@@ -96,43 +99,52 @@
             display: flex;
             gap: 20px;
             align-items: center;
-            
+
             margin-left: 100px;
         }
-        .rdbtn{
+
+        .rdbtn {
             color: green;
             text-decoration: none;
         }
-        .rdbtn:hover{
+
+        .rdbtn:hover {
             color: blue;
             text-decoration: none;
         }
-        .date{
+
+        .date {
             font-size: small;
         }
-        .portion{
-            
+
+        .portion {
+
             margin-top: 0px;
         }
-        .adpst{
+
+        .adpst {
             background-color: transparent;
             border-radius: 15px;
         }
-        .adpst a{
+
+        .adpst a {
             color: black;
 
         }
-        .adpst a:hover{
+
+        .adpst a:hover {
             text-decoration: none;
             color: white;
         }
-        .adpst:hover{
-            background-color:black;
+
+        .adpst:hover {
+            background-color: black;
             color: rgb(0, 72, 255);
         }
-        .blogabs{
-           overflow-y: hidden;
-           overflow-x: hidden;
+
+        .blogabs {
+            overflow-y: hidden;
+            overflow-x: hidden;
             height: 48px;
             margin-bottom: 10px;
         }
@@ -150,77 +162,56 @@
     <div class="container-fluid nav-background">
         {% include 'authentication/navbar.html' %}
     </div>
-    <div class="container-fluid mt-3 d-flex justify-content-between">
-        <button type="submit" class="btn btn-primary btn-lg mb-2" ><a href="{% url 'addnewpost' %}" style="text-decoration:none;color:white;">Add new post</a></button>
-    
+    <div class="container mt-3 d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary btn-sm mb-2"><a href="{% url 'addnewpost' %}"
+                style="text-decoration:none;color:white;">Add new post</a></button>
+
         <form action="{% url 'search' %}" class="form-inline" method="get">
             <div class="form-group mx-sm-3 mb-2">
-            <label for="" class="sr-only">search</label>
-            <input name="search" type="" class="form-control" id="" placeholder="type for search">
+                <label for="" class="sr-only">search</label>
+                <input name="search" type="" class="form-control" id="" placeholder="type for search">
             </div>
-          <button type="submit" class="btn btn-primary btn-lg mb-2">search</button>
+            <button type="submit" class="btn btn-primary btn-sm mb-2">search</button>
         </form>
     </div>
-    
-    
-    <section id="blog">
 
-        <!--Writing for blog from here-->
-        <!-- <div class="col-sm-12"> -->
-        <!-- <h1 class="text-dark my-5 text-center">BlogPosts</h1> -->
-        <!-- <div class="row"> -->
-        <!-- <div class="col-4"> -->
-        <!-- <button class="btn btn-success"><a href="{% url 'addnewpost' %}">Add new post</a></button> -->
-        <!-- </div> -->
-        <!-- </div> -->
-        <!-- </div> -->
+    <div class="container">
+        <div class="row">
+            {% for p in post %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    {% if p.thumbnail == "" %}
+                    <img class="card-img-top img-fluid" src="{% static 'blog/images/blogpic.jpg' %}" alt="Card image cap">
 
-        {% for p in post %}
+                    {% else %}
+                    <img class="card-img-top img-fluid" src="{{p.thumbnail.url}}" alt="Card image cap">
 
-        <div class="blogcontainer">
-            <div class="blog-box">
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="card-title">{{p.title}}</h3>
+                        <p class="card-text">{{p.abstract}}</p>
+                        <a class="" style="text-decoration: none;" href="{% url 'readmore' p.id %}" role="button">Read
+                            more</a>
+                        <p class="card-text"><small class="text-muted">{{p.published_date}}</small></p>
+                        <div class="d-flex">
+                            <form action="{% url 'update' p.id %}">
+                                <input type="submit" class="btn btn-primary mr-3" value="Edit">
+                            </form>
+                            {% if admin %}
+                            <form action="{% url 'delete' p.id %}" class="" method="post">
+                                {%csrf_token%}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
 
-                <!-- {% if admin %}
-                <form action="{% url 'delete' p.id %}" class="d-inline" method="post"> -->
-                <!-- {% csrf_token %} -->
-
-                <!-- </form> -->
-
-
-                <!-- {% endif %} -->
-                <img src="{% static 'blog/images/blogpic.jpg' %}" alt="">
-
-                <h1 class="blog-heading">{{p.title}}</h1>
-                
-                <div class="blogabs">{{p.abstract}}</div>
-                
-                <!-- <hr style="position: absolute;margin-top: 5px;height:2px;border-width:0;color:black;background-color:black"> -->
-                <div class="portion">
-                    
-                    <span> Author: <strong>{{p.author}}</strong></span>
-                    <br><span class="date">{{p.published_date}}</span>
-                    
-                    <br><a class="rdbtn" href="{% url 'readmore' p.id %}" role="button">Read more</a>
-                    
-                    <!-- <a href="{% url 'update' p.id %}" class="edi">Edit</a> -->
-                    <div class="buttons">
-                        <form action="{% url 'update' p.id %}">
-                            <input type="submit" class="adddel" value="Edit">
-                        </form>
-                        {% if admin %}
-                        <form action="{% url 'delete' p.id %}" class="d-inline" method="post">
-                            {%csrf_token%}
-                            <input type="submit" class="adddel" value="Delete">
-                        </form>
-
-                        {% endif %}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-    
-    {% endfor %}
-</section>
+    </div>
+
 
 
 

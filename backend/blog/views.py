@@ -25,15 +25,17 @@ def blog(request):
 def addnewpost(request):
     if request.user.is_authenticated:
         if request.method=="POST":
-            fm = AddNewPost(request.POST)
+            fm = AddNewPost(request.POST,request.FILES)
             if fm.is_valid():
                 bp = BlogPost()
                 bp.author = request.user
                 bp.title = fm.cleaned_data['title']
                 bp.abstract = fm.cleaned_data['abstract']
                 bp.post = fm.cleaned_data['post']
-                bp.published_date = fm.cleaned_data['published_date']
+                bp.thumbnail = request.FILES.get('thumbnail')
+                # bp.published_date = fm.cleaned_data['published_date']
                 bp.save()
+                # fm.save()
                 return redirect('/blog/')
         else:
             fm = AddNewPost()

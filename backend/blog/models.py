@@ -10,8 +10,10 @@ class BlogPost(models.Model):
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     # post = models.TextField()
+
     abstract = models.TextField()
     post = RichTextField()
+    thumbnail = models.ImageField(upload_to="thumbnail/",blank=True,null=True)
     user_favorite = models.ManyToManyField(User,related_name='user_favorite',blank=True)
     published_date=models.DateTimeField(default=timezone.now)
 
