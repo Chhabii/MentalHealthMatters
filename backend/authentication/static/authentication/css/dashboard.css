@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    
+}
+html {
+    font-size: 14px;
+
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background-color: #f6f6f9;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: auto 30rem; 
+}
+a {
+    color: #363949;
+}
+img {
+    display: block;
+    width: 100%;
+}
+h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+h2 {
+    font-size: 1.4rem;
+}
+h3 {
+    font-size: 0.87rem;
+}
+h4 {
+    font-size: 0.8rem;
+}
+h5 {
+    font-size: 0.77rem;
+}
+.primary {
+    color: var(--color-primary);
+}
+.danger {
+    color: var(--color-danger);
+}
+.success {
+    color: var(--color-success);
+}
+.warning {
+    color: var(--color-warning);
+}
+small {
+    font-size: 0.85rem;
+}
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.text-muted {
+    color: #7d8da1;
+}
+
+main {
+    margin-top: 1.4rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+
+}
+main .insights {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.6rem;
+}
+main .insights > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    margin-top: 1rem;
+    transition: all 300ms ease;
+}
+main .insights > div:hover {
+    box-shadow: none;
+}
+main .insights >div .middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main .insights > div span {
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
+}
+
+main .insights h3 {
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+}
+main .insights .progress {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+main .insights svg {
+    width: 7rem;
+    height: 7rem;
+}
+main .insights svg circle {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transform: translate(5px,5px);
+    stroke-dasharray: 110;
+    stroke-dashoffset: 92;
+}
+main .insights .totalStudents svg circle {
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+main .insights .totalStudents svg circle {
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+main .insights .message svg circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 0;
+}
+main .insights .progress .number {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* URGENT STUDENTS */
+
+main .urgent-students {
+    margin-top: 2rem;
+}
+main .urgent-students h2 {
+    margin-bottom: 0.8rem;
+}
+main .urgent-students .urgent-students-table {
+    background: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    padding-bottom: 0.3rem;
+    transition: all 300ms ease;
+
+}
+main .urgent-students table {
+    width: 100%;
+    text-align: center;
+}
+main .urgent-students .urgent-students-table:hover {
+    box-shadow: none;
+}
+main table tbody td {
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: #5e6062;
+}
+main table tbody tr:last-child td {
+    border:none;
+}
+main .urgent-students a {
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+.right {
+    margin-top: 1.4rem;
+}
+
+.right .pending-students {
+    margin-top: 1rem;
+}
+.right .pending-students h2 {
+    margin-bottom: 0.8rem;
+}
+
+.right .pending-students .updates {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    padding-bottom: 0.3rem;
+    transition: all 300ms ease;
+}
+.right .pending-students .updates table {
+    background: var(--color-white);
+    width: 100%;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.right .pending-students .updates table:hover {
+    box-shadow: none;
+}
+.right .pending-students .updates table tbody td {
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+.right .pending-students .updates table tbody tr:last-child td {
+    border:none;
+}
+.right .pending-students .updates a {
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+.right .student-feedback {
+    margin-top: 1rem;
+}
+.right .student-feedback h2 {
+    margin-bottom: 0.8rem;
+}
+
+.right .student-feedback .updates {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+.right .student-feedback .updates .update {
+    display: grid;
+    grid-template-columns: 2.6rem auto;
+    gap:1rem;
+    margin-bottom: 1rem;
+}
